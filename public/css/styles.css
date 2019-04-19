@@ -55,3 +55,11 @@ button {
     padding: 8px;
 
 }
+
+.userNamePassword {
+    width: 170px;
+}
+
+.movieSearch {
+    width: 260px;
+}
