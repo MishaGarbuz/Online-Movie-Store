@@ -15,6 +15,17 @@ router.post('/users', async (req, res) => {
     }
 })
 
+//----------------- Only allows access when login credentials are successful -----------------\\
+
+router.post('/users/login', async (req, res) => {
+    try {
+        const user = await User.findByCredentials(req.body.Email, req.body.Password)
+        res.send(user)
+    } catch (e) {
+        res.status(400).send()
+    }
+})
+
 //----------------- Gets all users using the get action of the app -----------------------\\
 
 router.get('/users', async (req,res) => {
