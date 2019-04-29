@@ -61,6 +61,14 @@ const userSchema = new mongoose.Schema({
                 throw new Error('Must be an Australian mobile phone number')
             }
         }
+    },
+    CreditCard: {
+        type: String,
+        validate(value) {
+            if(!validator.isCreditCard(value)) {
+                throw new Error('Must be a valid credit card number')
+            }
+        }
     }
 })
 

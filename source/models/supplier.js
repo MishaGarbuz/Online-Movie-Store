@@ -13,9 +13,11 @@ const Supplier = mongoose.model('Supplier', {
         trim: true        
     },
     Categories: [{
-        Category1: String,
-        Category2: String,
-        Category3: String
+        Category: {
+            type: String,
+            required: true,
+            trim: true
+        }
     }],
     PhoneNumber: {
         type: String,
