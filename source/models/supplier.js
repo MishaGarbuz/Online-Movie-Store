@@ -1,7 +1,7 @@
 const mongoose = require ('mongoose')
 const validator = require ('validator')
 
-const Supplier = mongoose.model('Supplier', {
+const supplierSchema = new mongoose.Schema({
     Name: {
         type: String,
         required: true,
@@ -29,5 +29,17 @@ const Supplier = mongoose.model('Supplier', {
         }
     }
 })
+
+supplierSchema.statics.findSupplier = async (Name) => {
+    const supplier = await Supplier.findOne({ Name })
+
+    if (!supplier) {
+        throw new Error('Unable to find supplier')
+    }
+
+    return supplier
+}
+
+const Supplier = mongoose.model('Supplier',supplierSchema)
 
 module.exports = Supplier

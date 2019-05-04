@@ -98,6 +98,10 @@ userSchema.pre('save', async function (next) {
         user.Password = await bcrypt.hash(user.Password, 8)
     }
 
+    if (user.isModified('CreditCard')) {
+        user.CreditCard = await bcrypt.hash(user.CreditCard, 8)
+    }
+
     next()
 })
 

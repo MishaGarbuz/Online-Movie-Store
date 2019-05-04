@@ -16,5 +16,17 @@ router.post('/suppliers', async (req, res) => {
 })
 
 
+//----------------- Gets all users using the get action of the app -----------------------\\
+
+router.get('/suppliers', async (req,res) => {
+    try {
+        const suppliers = await Supplier.find({})
+        res.send(suppliers)
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
+
 
 module.exports = router
