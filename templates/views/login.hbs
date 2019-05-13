@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang= "en">
+<head>
+      <title>Login</title>
+      <link rel="icon" href="/img/video-solid.svg">
+      <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body> 
+  <div class = "main-content">
+    <h1>{{title}}</h1>
+    <p>Please login to continue</p>
+
+    <form>
+      <input id = "userName" class="userNamePassword" placeholder="Please enter your username"> 
+      <p></p>
+      <input id = "password" type = "password" class="userNamePassword" placeholder="Please enter your password">
+    </form>
+    <p></p>
+    <button id = "login">Login</button>
+    {{!-- <p id = "message-1"></p>
+    <p id = "message-2"></p> --}}
+  </div>
+    {{>footer}}
+    <script src="/js/app.js"></script>
+</body>
+
+
+</html>
