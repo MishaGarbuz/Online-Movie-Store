@@ -21,11 +21,20 @@ hbs.registerPartials(partialsPath)
 app.use(express.static(publicDirectoryPath))
 
 app.get('', (req,res) => {
+    res.render('index', {
+        title: 'Index',
+        name: 'Michael Garbuz'
+    })
+})
+
+app.get('/login', (req,res) => {
     res.render('login', {
         title: 'Login',
         name: 'Michael Garbuz'
     })
 })
+
+
 
 app.get('/store',(req,res) => {
     res.render('store', {
