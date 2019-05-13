@@ -63,3 +63,11 @@ button {
 .movieSearch {
     width: 260px;
 }
+
+.emailField {
+    width: 200px;
+}
+
+.passwordVerification {
+    width: 200px;
+}

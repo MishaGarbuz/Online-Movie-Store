@@ -34,7 +34,12 @@ app.get('/login', (req,res) => {
     })
 })
 
-
+app.get('/register', (req,res) => {
+    res.render('register', {
+        title: 'Register',
+        name: 'Michael Garbuz'
+    })
+})
 
 app.get('/store',(req,res) => {
     res.render('store', {
