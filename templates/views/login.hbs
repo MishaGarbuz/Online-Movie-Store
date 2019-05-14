@@ -11,6 +11,7 @@
 	<script type="text/javascript" src="/js/clientside.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="/css/style2.css" rel="stylesheet" type="text/css">
+	<link href="/css/login.css" rel="stylesheet">
 </head>
 
 </html>
@@ -28,18 +29,34 @@
 				<a href="/movies" ><img class ="nav-img" src="img/Base_Side_Bar/film.png" style='width:80%;height:80%;'>Movies</a>
 			</li>
 
-
 			<li>
 				<a href="/orders" ><img class="nav-img"  src='img/Base_Side_Bar/order.png' style='width:80%;height:80%;'>Orders</a>
 			</li>
+
 			<li>
 				<a href="/about" class="nav-img"><img class="nav-img"  src='img/Base_Side_Bar/email.png' style='width:80%;height:80%;'>Contact Us</a>
 			</li>
 
 		</ul>
 	</div>
-
-
 </div>
+
+<form action="action_page.php">
+	<div class="imgcontainer">
+		<img src="/img/img_avatar.png" alt="Avatar" class="avatar"
+	</div>
+
+	<div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <button type="submit">Login</button>
+  </div>
+
+</form>
+
 </body>
 </html>
