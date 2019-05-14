@@ -1,62 +1,75 @@
 <!DOCTYPE html>
 
-<html lang= "en">
-<head>
-	<title>Login</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/js/clientside.js"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link href="/css/style2.css" rel="stylesheet" type="text/css">
-	<link href="/css/login.css" rel="stylesheet">
-</head>
+<html lang="en">
+
+	<head>
+		<title>Login</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/clientside.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="/css/style2.css" rel="stylesheet" type="text/css">
+		<link href="/css/login.css" rel="stylesheet">
+		
+		<!-- Add icon library -->
+		<link rel="stylesheet" href="/css/login.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/	libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
 
 </html>
 
 <body>
-<div class= 'container-fluid'>
-	<div class="constSide">
-		<ul class='nav navbar-nav constNavBar'>
-			<li class="active">
-				<a href="/" ><img class="nav-img-active" src='img/Hover_Side_Bar/home-hover.png' style='width:80%;height:40%;'>Home</a>
+	<div class='container-fluid'>
+		<div class="constSide">
+			<ul class='nav navbar-nav constNavBar'>
+				<li class="active">
+					<a href="/"><img class="nav-img-active" src='img/Hover_Side_Bar/home-hover.png'
+							style='width:80%;height:40%;'>Home</a>
 
-			</li>
+				</li>
 
-			<li>
-				<a href="/movies" ><img class ="nav-img" src="img/Base_Side_Bar/film.png" style='width:80%;height:80%;'>Movies</a>
-			</li>
+				<li>
+					<a href="/movies"><img class="nav-img" src="img/Base_Side_Bar/film.png"
+							style='width:80%;height:80%;'>Movies</a>
+				</li>
 
-			<li>
-				<a href="/orders" ><img class="nav-img"  src='img/Base_Side_Bar/order.png' style='width:80%;height:80%;'>Orders</a>
-			</li>
+				<li>
+					<a href="/orders"><img class="nav-img" src='img/Base_Side_Bar/order.png'
+							style='width:80%;height:80%;'>Orders</a>
+				</li>
 
-			<li>
-				<a href="/about" class="nav-img"><img class="nav-img"  src='img/Base_Side_Bar/email.png' style='width:80%;height:80%;'>Contact Us</a>
-			</li>
+				<li>
+					<a href="/about" class="nav-img"><img class="nav-img" src='img/Base_Side_Bar/email.png'
+							style='width:80%;height:80%;'>Contact Us</a>
+				</li>
 
-		</ul>
+			</ul>
+		</div>
 	</div>
-</div>
 
-<form action="action_page.php">
-	<div class="imgcontainer">
-		<img src="/img/img_avatar.png" alt="Avatar" class="avatar"
-	</div>
+	<form action="/action_page.php" style="max-width:500px;margin:auto">
 
-	<div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+		<div class="imgcontainer">
+    	<img src="/img/img_avatar.png" alt="Avatar" class="avatar">
+  	</div>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+		<div class="input-container">
+			<i class="fa fa-envelope icon"></i>
+			<input class="input-field" type="text" placeholder="Email" name="email">
+		</div>
 
-    <button type="submit">Login</button>
-  </div>
+		<div class="input-container">
+			<i class="fa fa-key icon"></i>
+			<input class="input-field" type="password" placeholder="Password" name="psw">
+		</div>
 
-</form>
+		<button type="submit" class="btn">Login</button>
+
+	</form>
 
 </body>
+
 </html>
