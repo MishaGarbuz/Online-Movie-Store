@@ -6,8 +6,10 @@ const userSchema = new mongoose.Schema({
     Name: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        required: true,
     },
+
     Email: {
         type: String,
         required: true,
@@ -18,41 +20,50 @@ const userSchema = new mongoose.Schema({
                 throw new Error('Email is invalid')
             }
         },
-        unique: true
+        unique: true,
+        required: true,
     },
+
     Age: {
         type: Number,
         default: 18,
+        required: true,
         validate(value) {
             if(value < 0) {
                 throw new Error('Age must be a positive number')
             }
         }
     },
+
     Password: {
         type: String,
         required: true,
         trim: true,
         minlength: 7,
+        required: true,
         validate(value) {
             if(value.toLowerCase().includes('password')) {
                 throw new Error('Password cannot contain the word, password')
             }
         }
     },
+
     Admin: {
         type: Boolean,
         required: true,
     },
+
     Staff: {
         type: Boolean,
         required: true
     },
+
     Address: {
         type: String,
         required: true,
         trim: true
     },
+
     PhoneNumber: {
         type: String,
         required: true,
@@ -62,6 +73,7 @@ const userSchema = new mongoose.Schema({
             }
         }
     },
+
     CreditCard: {
         type: String,
         validate(value) {

@@ -1,12 +1,28 @@
 const express = require('express')
 const hbs = require('hbs')
 const path = require('path')
+const mongoose = require('mongoose');
 
 console.log(__dirname)
 console.log(path.join(__dirname,'../public'))
 
 const app = express()
 const port = 3000
+
+//map global promise - remove warning
+mongoose.Promise = global.Promise;
+
+//connect mongoose
+mongoose.connect('mongodb://localhost/movie-dev', {
+    useNewUrlParser: true
+})
+.then(() => console.log('MongoDB Connected...'))
+.catch(err => console.log(err));
+
+//load user model
+require('./models/user');
+const User = mongoose.model('User');
+
 // define paths for express coniguration
 const publicDirectoryPath = path.join(__dirname,'../public')
 const viewsPath = path.join(__dirname,'../templates/views')
