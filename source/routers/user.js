@@ -6,8 +6,15 @@ const mongoose = require('mongoose');
 //----------------- Creates a new user using the post action of the app -----------------\\
 
 router.post('/register', async (req, res) => {
-    //console.log('req.body');
-    res.send('register');
+    const user = new User(req.body)
+
+    try {
+        await user.save()
+        res.status(201).send(user)
+    } catch (e) {
+        res.status(400).send(e)
+    }
+
 })
 
 //----------------- Only allows access when login credentials are successful -----------------\\
