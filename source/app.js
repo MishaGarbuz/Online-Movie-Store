@@ -34,6 +34,13 @@ app.get('/login', (req,res) => {
     })
 })
 
+app.get('/orders', (req, res) => {
+    res.render('orders', {
+        title: 'Orders',
+        name: 'Dov Royal'
+    })
+})
+
 app.get('/register', (req,res) => {
     res.render('register', {
         title: 'Register',
@@ -41,8 +48,8 @@ app.get('/register', (req,res) => {
     })
 })
 
-app.get('/store',(req,res) => {
-    res.render('store', {
+app.get('/movies',(req,res) => {
+    res.render('movies', {
         title: 'Online Movie Store',
         name: 'Michael Garbuz'
     })
