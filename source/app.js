@@ -1,16 +1,21 @@
 const express = require('express')
 const hbs = require('hbs')
 const path = require('path')
+require('./db/mongoose')
+const userRouter = require('./routers/user')
+const supplierRouter = require('./routers/supplier')
 
-console.log(__dirname)
-console.log(path.join(__dirname,'../public'))
 
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 // define paths for express coniguration
 const publicDirectoryPath = path.join(__dirname,'../public')
 const viewsPath = path.join(__dirname,'../templates/views')
 const partialsPath = path.join(__dirname,'../templates/partials')
+
+app.use(express.json())
+app.use(userRouter)
+app.use(supplierRouter)
 
 // setup handle bars engine and views location
 app.set('view engine','hbs')

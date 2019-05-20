@@ -1,30 +1,84 @@
 <!DOCTYPE html>
 
-<html lang= "en">
-<head>
-      <title>Login</title>
-      <link rel="icon" href="/img/video-solid.svg">
-      <link rel="stylesheet" href="/css/styles.css">
-</head>
+<html lang="en">
 
-<body> 
-  <div class = "main-content">
-    <h1>{{title}}</h1>
-    <p>Please login to continue</p>
+	<head class="bg-image">
+		<title>Login</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/js/clientside.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="/css/style2.css" rel="stylesheet" type="text/css">
+    {{!-- <link href="/css/styles.css" rel="stylesheet" type="text/css"> --}}
+		<link href="/css/login.css" rel="stylesheet">
+		
+		<!-- Add icon library -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/	libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/css/login.css">
+	</head>
 
-    <form>
-      <input id = "userName" class="userNamePassword" placeholder="Please enter your username"> 
-      <p></p>
-      <input id = "password" type = "password" class="userNamePassword" placeholder="Please enter your password">
-    </form>
-    <p></p>
-    <button id = "login">Login</button>
-    {{!-- <p id = "message-1"></p>
-    <p id = "message-2"></p> --}}
-  </div>
-    {{>footer}}
-    <script src="/js/app.js"></script>
-</body>
+</html>
 
+<body>
+	<div class='container-fluid'>
+		<div class="constSide">
+			<ul class='nav navbar-nav constNavBar'>
+				
+				<li>
+					<a href="/"><img class="nav-img-active" src='img/Hover_Side_Bar/home-hover.png'
+							style='width:80%;height:40%;'>Home</a>
+
+				</li>
+
+				<li>
+					<a href="/movies"><img class="nav-img" src="img/Base_Side_Bar/film.png"
+							style='width:80%;height:80%;'>Movies</a>
+				</li>
+
+				<li>
+					<a href="/orders"><img class="nav-img" src='img/Base_Side_Bar/order.png'
+							style='width:80%;height:80%;'>Orders</a>
+				</li>
+
+				<li>
+					<a href="/about" class="nav-img"><img class="nav-img" src='img/Base_Side_Bar/email.png'
+							style='width:80%;height:80%;'>Contact Us</a>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+		<div class="row">
+			<div class="col-md-5 mx-auto">
+				<div class="card card-body">
+
+					<img id = "avatar" src="/img/img_avatar.png" class="avatar">
+
+					<h5 class="text-center">Account Login</h5>
+					
+					<form id = "loginForm" action="localhost:3000/users">
+						
+						<div class="input-container">
+							<i class="fa fa-envelope icon"></i>
+							<input id = "userName" class="input-field" type="email" placeholder="Email" name="email" required>
+						</div>
+		
+						<div class="input-container">
+							<i class="fa fa-key icon"></i>
+							<input id = "password" class="input-field" type="password" placeholder="Password" name="password" required>
+						</div>
+		
+						<button type="submit" class="btn btn-primary">Submit</button>
+		
+					</form>
+				</div>
+			</div>
+		</div>
+
+	</body>
 
 </html>

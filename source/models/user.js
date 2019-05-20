@@ -1,6 +1,7 @@
 const mongoose = require ('mongoose')
 const validator = require ('validator')
 const bcrypt = require ('bcryptjs')
+const jwt = require('jsonwebtoken')
 
 const userSchema = new mongoose.Schema({
     Name: {
@@ -64,15 +65,40 @@ const userSchema = new mongoose.Schema({
     },
     CreditCard: {
         type: String,
-        validate(value) {
-            if(!validator.isCreditCard(value)) {
-                throw new Error('Must be a valid credit card number')
-            }
+        // validate(value) {
+        //     if(!validator.isCreditCard(value)) {
+        //         throw new Error('Must be a valid credit card number')
+        //     }
+        // }
+    },
+    tokens: [{
+        token: {
+            type: String,
+            required: true
         }
-    }
+    }]
 })
 
 // Function to search for user and then checked password against hashed passwored in DB
+
+userSchema.methods.toJSON = function () {
+    const user = this
+    const userObject = user.toObject()
+
+    delete userObject.Password
+    delete userObject.tokens
+
+    return userObject
+}
+
+userSchema.methods.generateAuthToken = async function () {
+    const user = this
+    const token = jwt.sign({ _id: user._id.toString() },';UV73yVT(56DP+' )
+    user.tokens = user.tokens.concat({ token })
+    await user.save()
+
+    return token
+}
 
 userSchema.statics.findByCredentials = async (Email, Password) => {
     const user = await User.findOne({ Email })
