@@ -30,6 +30,9 @@ const supplierSchema = new mongoose.Schema({
     }
 })
 
+
+// function on the supplier Schema to find a given supplier by their name
+
 supplierSchema.statics.findSupplier = async (Name) => {
     const supplier = await Supplier.findOne({ Name })
 
