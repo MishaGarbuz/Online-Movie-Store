@@ -2,11 +2,18 @@ const express = require('express')
 const router = new express.Router()
 const User = require('../models/user')
 const auth = require('../middleware/auth')
+const bodyParser = require('body-parser')
+
+const app = express()
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 //----------------- Creates a new user using the post action of the app -----------------\\
 
 router.post('/users', async (req, res) => {
     const user = new User(req.body)
+    user.Admin = false;
+    user.Staff = false;
 
     try {
         await user.save()
@@ -23,11 +30,9 @@ router.post('/users/login', async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.Email, req.body.Password)
         const token = await user.generateAuthToken()
-        console.log({user, token});
-        res.send({user, token})
-        res.render('/');
+        res.send({ user, token })
     } catch (e) {
-        res.status(400).send()
+        res.status(400).send(e.message)
     }
 })
 
@@ -75,12 +80,13 @@ router.post('/users/logoutall', auth, async (req, res) => {
 
 
 router.get('/users/me', auth, async (req,res) => {
+    //console.log(req)
     res.send(req.user)
 })
 
 //----------------- Updates a user using findByIdAndUpdate with authentication -----------------------\\
 
-router.patch('/users/me', auth, async (req,res) => {
+router.patch('/users/me', async (req,res) => {
     const updates = Object.keys(req.body)
     const allowedUpdates = ['Name','Email','Password','Age']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))

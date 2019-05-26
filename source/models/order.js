@@ -2,7 +2,7 @@ const mongoose = require ('mongoose')
 const validator = require ('validator')
 
 const orderSchema = new mongoose.Schema({
-    Description: {
+    Movie: {
         type: String,
         trim: true,
         required: true
@@ -16,10 +16,10 @@ const orderSchema = new mongoose.Schema({
         required: true,
         ref: 'User'
     },
-    Movie: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'Movie'
+    Quantity: {
+        type: Number,
+        require: true,
+        default: 1
     }
 }, {
     timestamps: true

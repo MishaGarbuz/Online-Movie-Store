@@ -27,10 +27,16 @@ router.get('/allorders', async (req,res) => {
 
 router.get('/orders', auth, async (req,res) => {
     const match = {}
+    const sort = {}
 
     if (req.query.Completed) {
         match.Completed = req.query.Completed === 'true'
     } 
+
+    if (req.query.sortBy) {
+        const parameters = req.query.sortBy.split(':')
+        sort[parameters[0]] = parameters[1] === 'desc' ? -1 : 1 //the part after ? is true, after : is false 
+    }
 
     try {
         await req.user.populate({
@@ -38,7 +44,8 @@ router.get('/orders', auth, async (req,res) => {
             match,
             options: {
                 limit: parseInt(req.query.limit),
-                skip: parseInt(req.query.skip)
+                skip: parseInt(req.query.skip),
+                sort
             }
         }).execPopulate()
         
