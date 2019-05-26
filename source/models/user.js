@@ -77,6 +77,14 @@ const userSchema = new mongoose.Schema({
             required: true
         }
     }]
+}, {
+    timestamps: true
+})
+
+userSchema.virtual('Orders', {
+    ref: 'Order',
+    localField: '_id',
+    foreignField: 'Owner'
 })
 
 // Function to search for user and then checked password against hashed passwored in DB

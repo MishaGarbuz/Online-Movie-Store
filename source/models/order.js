@@ -1,9 +1,9 @@
 const mongoose = require ('mongoose')
 const validator = require ('validator')
 
-const Order = mongoose.model('Task', {
-    Amount: {
-        type: Number,
+const orderSchema = new mongoose.Schema({
+    Description: {
+        type: String,
         trim: true,
         required: true
     },
@@ -21,6 +21,9 @@ const Order = mongoose.model('Task', {
         required: true,
         ref: 'Movie'
     }
+}, {
+    timestamps: true
 })
+const Order = mongoose.model('Order', orderSchema)
 
 module.exports = Order

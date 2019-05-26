@@ -26,9 +26,22 @@ router.get('/allorders', async (req,res) => {
 })
 
 router.get('/orders', auth, async (req,res) => {
+    const match = {}
+
+    if (req.query.Completed) {
+        match.Completed = req.query.Completed === 'true'
+    } 
+
     try {
-        // const orders = await Order.find({})
-        await req.user.populate('Orders').execPopulate()
+        await req.user.populate({
+            path: 'Orders',
+            match,
+            options: {
+                limit: parseInt(req.query.limit),
+                skip: parseInt(req.query.skip)
+            }
+        }).execPopulate()
+        
         res.send(req.user.Orders)
     } catch (e) {
         res.status(500).send()
