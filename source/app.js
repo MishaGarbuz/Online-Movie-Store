@@ -46,6 +46,13 @@ app.get('/register', (req,res) => {
     })
 })
 
+app.get('/myaccount', (req,res) => {
+    res.render('myaccount', {
+        title: 'My Account',
+        name: 'Michael Garbuz'
+    })
+})
+
 app.get('/store',(req,res) => {
     res.render('store', {
         title: 'Online Movie Store',
