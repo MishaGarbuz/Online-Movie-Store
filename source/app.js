@@ -37,7 +37,8 @@ app.use(express.static(publicDirectoryPath))
 app.get('', (req,res) => {
     res.render('index', {
         title: 'Index',
-        name: 'Michael Garbuz'
+        name: 'Michael Garbuz',
+        pathToImage: 'img1'
     })
 })
 

@@ -4,6 +4,7 @@ const User = require('../models/user')
 const auth = require('../middleware/auth')
 const bodyParser = require('body-parser')
 
+
 const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -19,6 +20,8 @@ router.post('/users', async (req, res) => {
         await user.save()
         const token = await user.generateAuthToken()
         res.status(201).send({user, token})
+        res.cookie('token',token, {httpOnly: true})
+        res.redirect('/')
     } catch (e) {
         res.status(400).send(e)
     }
@@ -30,7 +33,14 @@ router.post('/users/login', async (req, res) => {
     try {
         const user = await User.findByCredentials(req.body.Email, req.body.Password)
         const token = await user.generateAuthToken()
-        res.send({ user, token })
+        if (token) {
+            loggedIn = true
+        } else {
+            loggedIn = false
+        }
+        res.cookie('token',token,{httpOnly: true})
+        res.render('index.hbs', {loggedIn, pathToImage: 'img'})
+        res.location('/')
     } catch (e) {
         res.status(400).send(e.message)
     }
@@ -54,9 +64,11 @@ router.post('/users/logout', auth, async (req, res) => {
         req.user.tokens = req.user.tokens.filter((token) => {
             return token.token !== req.token
         })
+        loggedIn = false
         await req.user.save()
-
-        res.send()
+        res.clearCookie('token')
+        res.location('/').render('index', {loggedIn, pathToImage: 'img'})
+        //res.send()
     } catch (e) {
         res.status(500).send(e)
     }
@@ -80,7 +92,7 @@ router.post('/users/logoutall', auth, async (req, res) => {
 
 
 router.get('/users/me', auth, async (req,res) => {
-    //console.log(req)
+    console.log(req.headers.cookie)
     res.send(req.user)
 })
 

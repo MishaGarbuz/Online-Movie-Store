@@ -5,11 +5,11 @@ const auth = async (req, res, next) => {
     try {
 
         //retrieves token from the header of the HTTP request
-        const token = req.header('Authorization').replace('Bearer ','')
+        //const token = req.header('Authorization').replace('Bearer ','')
+        const token = req.header('cookie').replace('token=','')
 
         //attempts to verify the token retrieved above
         const decoded = jwt.verify(token, ';UV73yVT(56DP+')
-
         //attempts to find a User using the ID that is stored within the jwt, also checks if token is part of the User's token array
         const user = await User.findOne({ _id: decoded._id, 'tokens.token': token })
 
