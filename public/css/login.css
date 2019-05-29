@@ -1,109 +1,113 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.bg-image {
-  /* The image used */
-  background-image: "/img/background.png";
-
-  /* Add the blur effect */
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.input-container {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  width: 100%;
-  margin-bottom: 15px;
-}
-
-.icon {
-  padding: 15px;
-  background: dodgerblue;
-  color: white;
-  min-width: 50px;
-  text-align: center;
-}
-
-.input-field {
-  width: 100%;
-  padding: 10px;
-  outline: none;
-}
-
-.input-field:focus {
-  border: 2px solid dodgerblue;
-}
-
-/* Set a style for the submit button */
-.btn {
-  background-color: dodgerblue;
-  color: white;
-  padding: 15px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-.btn:hover {
-  opacity: 1;
-}
-
-img.avatar {
-  width: 30%;
-  border-radius: 30%;
-}
-
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-}
-
-.container {
-  padding: 16px;
-}
-
-div.row {
-  margin-top: 150px;
-  margin-left: 500px;
-}
-
-.mapouter {
-  position: relative;
-  text-align: right;
-  height: 451px;
-  width: 700px;
-  align: center;
-}
-
-.gmap_canvas {
-  overflow: hidden;
-  background: none !important;
-  height: 451px;
-  width: 700px;
-  align: center;
-}
-
-div.map {
-  margin-top: 20px;
-  margin-left: 340px;
-}
-
-div.header {
-  margin-top: 20px;
-  margin-left: 500px;
-}
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  .bg-image {
+    /* The image used */
+    background-image: "/img/background.png";
+  
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+  
+    /* Full height */
+    height: 100%;
+  
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .input-container {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .icon {
+    padding: 15px;
+    background: dodgerblue;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+  }
+  
+  .input-field:focus {
+    border: 2px solid dodgerblue;
+  }
+  
+  /* Set a style for the submit button */
+  .btn {
+    background-color: dodgerblue;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+  }
+  
+  .btn:hover {
+    opacity: 1;
+  }
+  
+  img.avatar {
+    width: 30%;
+    border-radius: 30%;
+    align-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+  }
+  
+  .imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+  }
+  
+  .container {
+    padding: 16px;
+  }
+  
+  div.row {
+    margin-top: 150px;
+    margin-left: 500px;
+  }
+  
+  .mapouter {
+    position: relative;
+    text-align: right;
+    height: 451px;
+    width: 700px;
+    align: center;
+  }
+  
+  .gmap_canvas {
+    overflow: hidden;
+    background: none !important;
+    height: 451px;
+    width: 700px;
+    align: center;
+  }
+  
+  div.map {
+    margin-top: 20px;
+    margin-left: 340px;
+  }
+  
+  div.header {
+    margin-top: 20px;
+    margin-left: 500px;
+  }

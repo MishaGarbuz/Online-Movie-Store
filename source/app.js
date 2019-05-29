@@ -1,32 +1,30 @@
 const express = require('express')
 const hbs = require('hbs')
 const path = require('path')
-const mongoose = require('mongoose');
+require('./db/mongoose')
+const userRouter = require('./routers/user')
+const supplierRouter = require('./routers/supplier')
+const orderRouter = require('./routers/order')
+const bodyParser = require('body-parser')
 
-console.log(__dirname)
-console.log(path.join(__dirname,'../public'))
+
 
 const app = express()
-const port = 3000
-
-//map global promise - remove warning
-mongoose.Promise = global.Promise;
-
-//connect mongoose
-mongoose.connect('mongodb://localhost/movie-dev', {
-    useNewUrlParser: true
-})
-.then(() => console.log('MongoDB Connected...'))
-.catch(err => console.log(err));
-
-//load user model
-require('./models/user');
-const User = mongoose.model('User');
-
+const port = process.env.PORT || 3000
 // define paths for express coniguration
 const publicDirectoryPath = path.join(__dirname,'../public')
 const viewsPath = path.join(__dirname,'../templates/views')
 const partialsPath = path.join(__dirname,'../templates/partials')
+
+
+// Use body-parser as middleware for the app.
+app.use(bodyParser.json())
+// Permit the app to parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.json())
+app.use(userRouter)
+app.use(supplierRouter)
+app.use(orderRouter)
 
 // setup handle bars engine and views location
 app.set('view engine','hbs')
@@ -39,24 +37,15 @@ app.use(express.static(publicDirectoryPath))
 app.get('', (req,res) => {
     res.render('index', {
         title: 'Index',
+        name: 'Michael Garbuz',
+        pathToImage: 'img1'
     })
 })
 
 app.get('/login', (req,res) => {
     res.render('login', {
         title: 'Login',
-    })
-})
-
-app.get('/orders', (req, res) => {
-    res.render('orders', {
-        title: 'Orders',
-    })
-})
-
-app.get('/register', (req,res) => {
-    res.render('register', {
-        title: 'Register',
+        name: 'Michael Garbuz'
     })
 })
 
@@ -66,15 +55,45 @@ app.get('/movies',(req,res) => {
     })
 })
 
+app.get('/register', (req,res) => {
+    res.render('register', {
+        title: 'Register',
+        name: 'Michael Garbuz'
+    })
+})
+
 app.get('/about',(req,res) => {
     res.render('about', {
         title: 'About Us',
     })
 })
 
+app.get('/myaccount', (req,res) => {
+    res.render('myaccount', {
+        title: 'My Account',
+        name: 'Michael Garbuz'
+    })
+})
+
+app.get('/store',(req,res) => {
+    res.render('store', {
+        title: 'Online Movie Store',
+        name: 'Michael Garbuz'
+    })
+})
+
+app.get('/about',(req,res) => {
+    res.render('about', {
+        title: 'About Us',
+        name: 'Michael Garbuz'
+    })
+})
+
 app.get('/help', (req,res) => {
     res.render('help', {
         title: 'Help Page',
+        name: 'Michael Garbuz',
+        helpText: 'Insert help text'
     })
 })
 
