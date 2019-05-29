@@ -12,6 +12,11 @@ body {
 
 }
 
+table {
+	width: 90%;
+	text-align: center;
+}
+
 .constNavBar {
 	list-style-type: none;
 	margin: 0px;

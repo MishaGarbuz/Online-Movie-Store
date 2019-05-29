@@ -49,7 +49,12 @@ router.get('/orders', auth, async (req,res) => {
             }
         }).execPopulate()
         
-        res.send(req.user.Orders)
+        //res.send(req.user.Orders)
+        res.render('myorders'), {
+            title: 'My Orders',
+            orderList: req.user.Orders,
+            loggedIn: true 
+        }
     } catch (e) {
         res.status(500).send()
     }

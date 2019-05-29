@@ -6,6 +6,7 @@ const userRouter = require('./routers/user')
 const supplierRouter = require('./routers/supplier')
 const orderRouter = require('./routers/order')
 const bodyParser = require('body-parser')
+const auth = require('../source/middleware/auth')
 
 
 
@@ -21,6 +22,7 @@ const partialsPath = path.join(__dirname,'../templates/partials')
 app.use(bodyParser.json())
 // Permit the app to parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
+
 app.use(express.json())
 app.use(userRouter)
 app.use(supplierRouter)
@@ -35,10 +37,17 @@ hbs.registerPartials(partialsPath)
 app.use(express.static(publicDirectoryPath))
 
 app.get('', (req,res) => {
+    console.log(req)
+    if (req.headers.cookie) {
+        loggedIn = true
+    } else {
+        loggedIn = false;
+    }
     res.render('index', {
         title: 'Index',
         name: 'Michael Garbuz',
-        pathToImage: 'img1'
+        pathToImage: 'img1',
+        loggedIn: loggedIn
     })
 })
 
@@ -56,12 +65,15 @@ app.get('/register', (req,res) => {
     })
 })
 
-app.get('/myaccount', (req,res) => {
+app.get('/myaccount', auth, (req,res) => {
     res.render('myaccount', {
         title: 'My Account',
-        name: 'Michael Garbuz'
+        name: 'Michael Garbuz',
+        User: req.user,
+        loggedIn: true
     })
 })
+
 
 app.get('/store',(req,res) => {
     res.render('store', {

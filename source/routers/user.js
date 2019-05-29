@@ -39,8 +39,8 @@ router.post('/users/login', async (req, res) => {
             loggedIn = false
         }
         res.cookie('token',token,{httpOnly: true})
-        res.render('index.hbs', {loggedIn, pathToImage: 'img'})
-        res.location('/')
+        res.redirect('/')
+        //res.render('index.hbs', {loggedIn})
     } catch (e) {
         res.status(400).send(e.message)
     }
@@ -66,8 +66,8 @@ router.post('/users/logout', auth, async (req, res) => {
         })
         loggedIn = false
         await req.user.save()
-        res.clearCookie('token')
-        res.location('/').render('index', {loggedIn, pathToImage: 'img'})
+        res.clearCookie('token').redirect('/')
+        //res.render('index', {loggedIn, pathToImage: 'img'})
         //res.send()
     } catch (e) {
         res.status(500).send(e)
@@ -92,7 +92,6 @@ router.post('/users/logoutall', auth, async (req, res) => {
 
 
 router.get('/users/me', auth, async (req,res) => {
-    console.log(req.headers.cookie)
     res.send(req.user)
 })
 

@@ -3,7 +3,7 @@
 <html lang="en">
 
 	<head class="bg-image">
-		<title>My Account</title>
+		<title>My Orders</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -73,7 +73,7 @@
 														<a href = "/myaccount">My Account</a>
 														{{else}}
 														<a href = "/register">Register</a>
-                            <a href = "/login">Login</a>
+                                                        <a href = "/login">Login</a>
 														{{/if}}
 														</form>
                         </div>
@@ -84,18 +84,16 @@
 		</div>
 		<table>
 			<tr>
-				<td>Name</td>
-				<td>Email</td>
-				<td>Address</td>
-				<td>Phone</td>
-				<td>Age</td>
+				<td>Movie</td>
+				<td>Completed</td>
+				<td>Owner</td>
+				<td>Quantity</td>
 			</tr>
 			<tr>
-				<td>{{User.Name}}</td>
-				<td>{{User.Email}}</td>
-				<td>{{User.Address}}</td>
-				<td>{{User.PhoneNumber}}</td>
-				<td>{{User.Age}}</td>
+				<td>{{orderList.Movie}}</td>
+				<td>{{orderList.Completed}}</td>
+				<td>{{orderList.Owner}}</td>
+				<td>{{orderList.Quantity}}</td>
 			</tr>
 		</table>
 
