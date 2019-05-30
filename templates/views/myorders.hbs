@@ -9,6 +9,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/js/clientside.js"></script>
+    <script type="text/javascript" src="/js/inline-edit.s"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="/css/style2.css" rel="stylesheet" type="text/css">
 </head>
@@ -76,24 +77,32 @@
 			{{!-- <hr style="height: 5px; border: 0; box-shadow: inset 0 12px 12px -8px rgba(0,0,0,0.5); margin-top: -10px;"> --}}
 		</div>
         <a href = "/neworder" ><button>Create Order</button></a>
+        <a href = "/orders/?Completed=true"><button>Filter Returned Movies</button></a>
+        <a href = "/orders/?Completed=false"><button>Filter Unreturned Movies</button></a>
+
         <p></p><p></p>
-		<table>
+		<table class = "sortable">
+            <thead>
 			<tr>
-				<td><b>Movie</b></td>
-				<td><b>Returned</b></td>
-				<td><b>Quantity</b></td>
-                <td><b>Order Date</b></td>
+				<th style = "text-align: center">Movie</th>
+				<th style = "text-align: center">Returned</th>
+				<th style = "text-align: center">Quantity</th>
+                <th style = "text-align: center">Order Date</th>
 			</tr>
+            </thead>
+            <tbody>
                 {{#each orderList}}
 			<tr>
 				<td>{{Movie}}</td>
 				<td>{{Completed}}</td>
 				<td>{{Quantity}}</td>
                 <td>{{createdAt}}</td>
-                <td><a href = "/orders/{{_id}}"><button>Update Order</button></a></td>
+                <td><a href = "/updateorder/{{id}}/{{Movie}}/{{Completed}}/{{Quantity}}"><button>Update Order</button></a></td>
                 <td><a href = "/orders/{{_id}}"><button>Delete Order</button></a></td>
 			</tr>
                 {{/each}}
+            </tbody>
+
 		</table>
 
 </body>

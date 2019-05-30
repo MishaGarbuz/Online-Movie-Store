@@ -37,7 +37,6 @@ hbs.registerPartials(partialsPath)
 app.use(express.static(publicDirectoryPath))
 
 app.get('', (req,res) => {
-    console.log(req)
     if (req.headers.cookie) {
         loggedIn = true
     } else {
@@ -66,9 +65,28 @@ app.get('/register', (req,res) => {
 })
 
 app.get('/neworder', (req,res) => {
+    if (req.headers.cookie) {
+        loggedIn = true
+    } else {
+        loggedIn = false;
+    }
     res.render('neworder', {
         title: 'New Order',
-        name: 'Michael Garbuz'
+        name: 'Michael Garbuz',
+        loggedIn
+    })
+})
+
+app.get('/updateorder', (req,res) => {
+    if (req.headers.cookie) {
+        loggedIn = true
+    } else {
+        loggedIn = false;
+    }
+    res.render('updateorder', {
+        title: 'Update Order',
+        name: 'Michael Garbuz',
+        loggedIn
     })
 })
 
@@ -82,25 +100,10 @@ app.get('/myaccount', auth, (req,res) => {
 })
 
 
-app.get('/store',(req,res) => {
-    res.render('store', {
-        title: 'Online Movie Store',
-        name: 'Michael Garbuz'
-    })
-})
-
 app.get('/about',(req,res) => {
     res.render('about', {
         title: 'About Us',
         name: 'Michael Garbuz'
-    })
-})
-
-app.get('/help', (req,res) => {
-    res.render('help', {
-        title: 'Help Page',
-        name: 'Michael Garbuz',
-        helpText: 'Insert help text'
     })
 })
 

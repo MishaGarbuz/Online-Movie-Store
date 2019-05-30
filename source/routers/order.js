@@ -55,7 +55,6 @@ router.get('/orders', auth, async (req,res) => {
                 sort
             }
         }).execPopulate()
-        console.log(req.user.Orders[0].createdAt)
         
         //res.send(req.user.Orders)
        // console.log(req)
@@ -72,24 +71,34 @@ router.get('/orders', auth, async (req,res) => {
     }
 })
 
-// router.get('/orders/:id', auth, async (req,res) => {
-//     const _id = req.params.id
+router.get('/updateorder/:id/:Movie/:Completed/:Quantity', auth, async (req,res) => {
+    const _id = req.params.id
 
-//     try {
-//         const order = await Order.findOne({ _id, Owner: req.user._id})
+    try {
+        const order = await Order.findOne({ _id, Owner: req.user._id})
         
-//         if(!order) {
-//             return res.status(404).send()
-//         }
-//         res.send(order)
-//     } catch (e) {
-//         res.status(500).send()
-//     }
-// })
+        if(!order) {
+            return res.status(404).send()
+        }
+        //res.send(order)
+        console.log(req)
+        res.render('updateorder', {
+            title: 'Update Orders',
+            name: 'Michael Garbuz',
+            _id: req.params.id,
+            Movie: req.params.Movie,
+            Completed: req.params.Completed,
+            Quantity: req.params.Quantity
+        })
+    } catch (e) {
+        res.status(500).send()
+    }
+})
 
-router.patch('/orders/:id', auth, async (req,res) => {
+router.post('/orders/:id', auth, async (req,res) => {
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['Completed','Quantity']
+    console.log(req.body)
+    const allowedUpdates = ['Movie','Completed','Quantity']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
     
     if(!isValidOperation) {
@@ -105,7 +114,9 @@ router.patch('/orders/:id', auth, async (req,res) => {
 
         updates.forEach((update)=> order[update] = req.body[update])
         await order.save()
-        res.send(order)
+        res.redirect('/orders')
+        //res.send(order)
+
     } catch (e) {
         res.status(400).send(e)
     }
