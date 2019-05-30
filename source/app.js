@@ -65,6 +65,13 @@ app.get('/register', (req,res) => {
     })
 })
 
+app.get('/neworder', (req,res) => {
+    res.render('neworder', {
+        title: 'New Order',
+        name: 'Michael Garbuz'
+    })
+})
+
 app.get('/myaccount', auth, (req,res) => {
     res.render('myaccount', {
         title: 'My Account',

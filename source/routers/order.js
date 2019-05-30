@@ -2,6 +2,12 @@ const express = require('express')
 const router = new express.Router()
 const Order = require('../models/order')
 const auth = require('../middleware/auth')
+const bodyParser = require('body-parser')
+
+
+const app = express()
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 router.post('/orders', auth, async (req, res) => {
     const order = new Order({
@@ -10,7 +16,8 @@ router.post('/orders', auth, async (req, res) => {
     })
     try {
         await order.save()
-        res.status(201).send(order)
+        //res.status(201).send(order)
+        res.redirect('orders')
     } catch (e) {
         res.status(400).send(e)
     }
@@ -48,36 +55,41 @@ router.get('/orders', auth, async (req,res) => {
                 sort
             }
         }).execPopulate()
+        console.log(req.user.Orders[0].createdAt)
         
         //res.send(req.user.Orders)
-        res.render('myorders'), {
+       // console.log(req)
+        //console.log(req.user)
+        
+        res.render('myorders', {
             title: 'My Orders',
+            name: 'Michael Garbuz',
             orderList: req.user.Orders,
             loggedIn: true 
-        }
+        });
     } catch (e) {
         res.status(500).send()
     }
 })
 
-router.get('/orders/:id', auth, async (req,res) => {
-    const _id = req.params.id
+// router.get('/orders/:id', auth, async (req,res) => {
+//     const _id = req.params.id
 
-    try {
-        const order = await Order.findOne({ _id, Owner: req.user._id})
+//     try {
+//         const order = await Order.findOne({ _id, Owner: req.user._id})
         
-        if(!order) {
-            return res.status(404).send()
-        }
-        res.send(order)
-    } catch (e) {
-        res.status(500).send()
-    }
-})
+//         if(!order) {
+//             return res.status(404).send()
+//         }
+//         res.send(order)
+//     } catch (e) {
+//         res.status(500).send()
+//     }
+// })
 
 router.patch('/orders/:id', auth, async (req,res) => {
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['Completed','Description']
+    const allowedUpdates = ['Completed','Quantity']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
     
     if(!isValidOperation) {
@@ -99,7 +111,7 @@ router.patch('/orders/:id', auth, async (req,res) => {
     }
 })
 
-router.delete('/orders/:id', auth, async (req, res) => {
+router.get('/orders/:id', auth, async (req, res) => {
     try {
         const order = await Order.findOneAndDelete({_id: req.params.id, Owner: req.user._id})
 
@@ -107,7 +119,8 @@ router.delete('/orders/:id', auth, async (req, res) => {
             return res.status(404).send({ error:'Order not found!' })
         }
 
-        res.send(order)
+        //res.send(order)
+        res.redirect('/orders')
 
     } catch(e) {
         res.status(500).send(e)

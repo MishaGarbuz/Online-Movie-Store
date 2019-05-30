@@ -1,24 +1,17 @@
 <!DOCTYPE html>
 
-<html lang="en">
-
-	<head class="bg-image">
-		<title>My Orders</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/js/clientside.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link href="/css/style2.css" rel="stylesheet" type="text/css">
-    {{!-- <link href="/css/styles.css" rel="stylesheet" type="text/css"> --}}
-		{{!-- <link href="/css/login.css" rel="stylesheet"> --}}
-		
-		<!-- Add icon library -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/	libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="/css/login.css">
-	</head>
+<html lang= "en">
+<head>
+	<title>Online Movie Store</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/clientside.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="/css/style2.css" rel="stylesheet" type="text/css">
+</head>
 
 
 <body>
@@ -82,19 +75,25 @@
 			</nav>
 			{{!-- <hr style="height: 5px; border: 0; box-shadow: inset 0 12px 12px -8px rgba(0,0,0,0.5); margin-top: -10px;"> --}}
 		</div>
+        <a href = "/neworder" ><button>Create Order</button></a>
+        <p></p><p></p>
 		<table>
 			<tr>
-				<td>Movie</td>
-				<td>Completed</td>
-				<td>Owner</td>
-				<td>Quantity</td>
+				<td><b>Movie</b></td>
+				<td><b>Returned</b></td>
+				<td><b>Quantity</b></td>
+                <td><b>Order Date</b></td>
 			</tr>
+                {{#each orderList}}
 			<tr>
-				<td>{{orderList.Movie}}</td>
-				<td>{{orderList.Completed}}</td>
-				<td>{{orderList.Owner}}</td>
-				<td>{{orderList.Quantity}}</td>
+				<td>{{Movie}}</td>
+				<td>{{Completed}}</td>
+				<td>{{Quantity}}</td>
+                <td>{{createdAt}}</td>
+                <td><a href = "/orders/{{_id}}"><button>Update Order</button></a></td>
+                <td><a href = "/orders/{{_id}}"><button>Delete Order</button></a></td>
 			</tr>
+                {{/each}}
 		</table>
 
 </body>
