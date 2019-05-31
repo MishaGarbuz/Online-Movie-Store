@@ -153,7 +153,7 @@ router.get('/updateuser/:Name/:Email/:Address/:PhoneNumber/:Age', auth, async (r
 router.post('/user/:Name', auth, async (req,res) => {
     const updates = Object.keys(req.body)
     //console.log(req.body)
-    const allowedUpdates = ['Name','Email','Address','PhoneNumber']
+    const allowedUpdates = ['Name','Email','Address','PhoneNumber', 'Age']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
     
     if(!isValidOperation) {
