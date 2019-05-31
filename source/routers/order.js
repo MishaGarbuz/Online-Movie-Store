@@ -2,6 +2,12 @@ const express = require('express')
 const router = new express.Router()
 const Order = require('../models/order')
 const auth = require('../middleware/auth')
+const bodyParser = require('body-parser')
+
+
+const app = express()
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 router.post('/orders', auth, async (req, res) => {
     const order = new Order({
@@ -10,7 +16,8 @@ router.post('/orders', auth, async (req, res) => {
     })
     try {
         await order.save()
-        res.status(201).send(order)
+        //res.status(201).send(order)
+        res.redirect('orders')
     } catch (e) {
         res.status(400).send(e)
     }
@@ -49,13 +56,22 @@ router.get('/orders', auth, async (req,res) => {
             }
         }).execPopulate()
         
-        res.send(req.user.Orders)
+        //res.send(req.user.Orders)
+       // console.log(req)
+        //console.log(req.user)
+        
+        res.render('myorders', {
+            title: 'My Orders',
+            name: 'Michael Garbuz',
+            orderList: req.user.Orders,
+            loggedIn: true 
+        });
     } catch (e) {
         res.status(500).send()
     }
 })
 
-router.get('/orders/:id', auth, async (req,res) => {
+router.get('/updateorder/:id/:Movie/:Completed/:Quantity', auth, async (req,res) => {
     const _id = req.params.id
 
     try {
@@ -64,15 +80,25 @@ router.get('/orders/:id', auth, async (req,res) => {
         if(!order) {
             return res.status(404).send()
         }
-        res.send(order)
+        //res.send(order)
+        console.log(req)
+        res.render('updateorder', {
+            title: 'Update Orders',
+            name: 'Michael Garbuz',
+            _id: req.params.id,
+            Movie: req.params.Movie,
+            Completed: req.params.Completed,
+            Quantity: req.params.Quantity
+        })
     } catch (e) {
         res.status(500).send()
     }
 })
 
-router.patch('/orders/:id', auth, async (req,res) => {
+router.post('/orders/:id', auth, async (req,res) => {
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['Completed','Description']
+    console.log(req.body)
+    const allowedUpdates = ['Movie','Completed','Quantity']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
     
     if(!isValidOperation) {
@@ -88,13 +114,15 @@ router.patch('/orders/:id', auth, async (req,res) => {
 
         updates.forEach((update)=> order[update] = req.body[update])
         await order.save()
-        res.send(order)
+        res.redirect('/orders')
+        //res.send(order)
+
     } catch (e) {
         res.status(400).send(e)
     }
 })
 
-router.delete('/orders/:id', auth, async (req, res) => {
+router.get('/orders/:id', auth, async (req, res) => {
     try {
         const order = await Order.findOneAndDelete({_id: req.params.id, Owner: req.user._id})
 
@@ -102,7 +130,8 @@ router.delete('/orders/:id', auth, async (req, res) => {
             return res.status(404).send({ error:'Order not found!' })
         }
 
-        res.send(order)
+        //res.send(order)
+        res.redirect('/orders')
 
     } catch(e) {
         res.status(500).send(e)

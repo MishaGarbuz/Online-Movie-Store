@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!-- saved from url=(0028)http://localhost:3000/orders -->
+<html lang="en" class="gr__localhost"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Online Movie Store</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./Online Movie Store_files/font-awesome.min.css">
+	<script src="./Online Movie Store_files/jquery.min.js"></script>
+	<script src="./Online Movie Store_files/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./Online Movie Store_files/clientside.js"></script>
+    <script type="text/javascript" src="./Online Movie Store_files/inline-edit.s"></script>
+	<link rel="stylesheet" href="./Online Movie Store_files/bootstrap.min.css">
+	<link href="./Online Movie Store_files/style2.css" rel="stylesheet" type="text/css">
+</head>
+
+
+<body data-gr-c-s-loaded="true">
+<div class="container-fluid">
+	<div class="constSide">
+		<ul class="nav navbar-nav constNavBar">
+			<li class="active">
+				<a href="http://localhost:3000/"><img class="nav-img-active" src="./Online Movie Store_files/home-hover.png" style="width:80%;height:40%;">Home</a>
+
+			</li>
+
+
+			<li>
+				<a href="http://localhost:3000/events.asp"><img class="nav-img" src="./Online Movie Store_files/film.png" style="width:80%;height:80%;">Movies</a>
+			</li>
+
+
+			<li>
+				<a href="http://localhost:3000/orders"><img class="nav-img" src="./Online Movie Store_files/order.png" style="width:80%;height:80%;">Orders</a>
+			</li>
+			<li>
+				<a href="http://localhost:3000/contactus.html" class="nav-img"><img class="nav-img" src="./Online Movie Store_files/email.png" style="width:80%;height:80%;">Contact Us</a>
+			</li>
+
+		</ul>
+	</div>
+
+
+	<div class="mainbody">
+
+		<div class="topbar">
+			<nav class="navbar navbar-default">
+				<form class="navbar-form pull-left col-sm-4">
+					<div class="input-group">
+						<input type="text" class="form-control input-large search-query" placeholder="Search">
+							<div class="input-group-btn">
+						  	<button class="btn btn-default" type="submit">
+								<i class="glyphicon glyphicon-search"></i>
+						  	</button>
+						</div>
+					</div>
+				</form>
+                
+				<ul class="nav navbar-nav pull-right">
+                    <div class="dropdown">
+				        <li class="fb"><a href="http://localhost:3000/orders#">Account  <span class="glyphicon glyphicon-user"></span> <span class="glyphicon glyphicon-triangle-bottom"></span></a></li>
+                        <div class="dropdown-content">
+                            
+														<form action="http://localhost:3000/users/logout" method="POST">
+														<a href="javascript:;" onclick="parentNode.submit();">Logout</a>														
+														<a href="http://localhost:3000/myaccount">My Account</a>
+														</form>
+                        </div>
+                    </div>
+				</ul>
+			</nav>
+		</div>
+        <a href="http://localhost:3000/neworder"><button>Create Order</button></a>
+        <a href="http://localhost:3000/orders/?Completed=true"><button>Filter Returned Movies</button></a>
+        <a href="http://localhost:3000/orders/?Completed=false"><button>Filter Unreturned Movies</button></a>
+
+        <p></p><p></p>
+		<table class="sortable">
+            <thead>
+			<tr>
+				<th style="text-align: center">Movie</th>
+				<th style="text-align: center">Returned</th>
+				<th style="text-align: center">Quantity</th>
+                <th style="text-align: center">Order Date</th>
+			</tr>
+            </thead>
+            <tbody>
+			<tr>
+				<td>Justice Leage</td>
+				<td>false</td>
+				<td>2</td>
+                <td>Thu May 30 2019 18:50:41 GMT+1000 (Australian Eastern Standard Time)</td>
+                <td><a href="http://localhost:3000/updateorder/5cef996135562506efdedf98/Justice%20Leage/false/2"><button>Update Order</button></a></td>
+                <td><a href="http://localhost:3000/orders/5cef996135562506efdedf98"><button>Delete Order</button></a></td>
+			</tr>
+			<tr>
+				<td>The Conjouring</td>
+				<td>false</td>
+				<td>46</td>
+                <td>Thu May 30 2019 19:21:41 GMT+1000 (Australian Eastern Standard Time)</td>
+                <td><a href="http://localhost:3000/updateorder/5cefa0a5ef74110917476a01/The%20Conjouring/false/46"><button>Update Order</button></a></td>
+                <td><a href="http://localhost:3000/orders/5cefa0a5ef74110917476a01"><button>Delete Order</button></a></td>
+			</tr>
+			<tr>
+				<td>Jumanji</td>
+				<td>true</td>
+				<td>85</td>
+                <td>Thu May 30 2019 19:52:09 GMT+1000 (Australian Eastern Standard Time)</td>
+                <td><a href="http://localhost:3000/updateorder/5cefa7c96bcb830c2dbab250/Jumanji/true/85"><button>Update Order</button></a></td>
+                <td><a href="http://localhost:3000/orders/5cefa7c96bcb830c2dbab250"><button>Delete Order</button></a></td>
+			</tr>
+            </tbody>
+
+		<tfoot></tfoot></table>
+
+
+
+</div></div></body></html>

@@ -17,14 +17,14 @@
 <div class= 'container-fluid'>
 	<div class="constSide">
 		<ul class='nav navbar-nav constNavBar'>
-
 			<li class="active">
-				<a href="/" ><img class="nav-img-active" src={{pathToImage}}'img/Hover_Side_Bar/home-hover.png' style='width:80%;height:40%;'>Home</a>
+				<a href="/" ><img class="nav-img-active" src='img/Hover_Side_Bar/home-hover.png' style='width:80%;height:40%;'>Home</a>
+
 			</li>
 
 
 			<li>
-				<a href="/movies" ><img class ="nav-img" src="img/Base_Side_Bar/film.png" style='width:80%;height:80%;'>Movies</a>
+				<a href="events.asp" ><img class ="nav-img" src="img/Base_Side_Bar/film.png" style='width:80%;height:80%;'>Movies</a>
 			</li>
 
 
@@ -32,7 +32,7 @@
 				<a href="/orders" ><img class="nav-img"  src='img/Base_Side_Bar/order.png' style='width:80%;height:80%;'>Orders</a>
 			</li>
 			<li>
-				<a href="/about" class="nav-img"><img class="nav-img"  src='img/Base_Side_Bar/email.png' style='width:80%;height:80%;'>Contact Us</a>
+				<a href="/myaccount" class="nav-img"><img class="nav-img"  src='img/Base_Side_Bar/email.png' style='width:80%;height:80%;'>Contact Us</a>
 			</li>
 
 		</ul>
@@ -62,7 +62,7 @@
 														{{#if loggedIn}}
 														<form action = "/users/logout" method = "POST">
 														<a href = "javascript:;" onclick="parentNode.submit();">Logout</a>														
-														<a href = "/users/me">My Account</a>
+														<a href = "/myaccount">My Account</a>
 														{{else}}
 														<a href = "/register">Register</a>
                             <a href = "/login">Login</a>

@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 
-<html lang="en">
-
-	<head class="bg-image">
-		<title>My Account</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/js/clientside.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link href="/css/style2.css" rel="stylesheet" type="text/css">
-    {{!-- <link href="/css/styles.css" rel="stylesheet" type="text/css"> --}}
-		{{!-- <link href="/css/login.css" rel="stylesheet"> --}}
-		
-		<!-- Add icon library -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/	libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="/css/login.css">
-	</head>
+<html lang= "en">
+<head>
+	<title>Online Movie Store</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/clientside.js"></script>
+    <script type="text/javascript" src="/js/inline-edit.s"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="/css/style2.css" rel="stylesheet" type="text/css">
+</head>
 
 
 <body>
@@ -73,7 +67,7 @@
 														<a href = "/myaccount">My Account</a>
 														{{else}}
 														<a href = "/register">Register</a>
-                            <a href = "/login">Login</a>
+                                                        <a href = "/login">Login</a>
 														{{/if}}
 														</form>
                         </div>
@@ -82,21 +76,33 @@
 			</nav>
 			{{!-- <hr style="height: 5px; border: 0; box-shadow: inset 0 12px 12px -8px rgba(0,0,0,0.5); margin-top: -10px;"> --}}
 		</div>
-		<table>
+        <a href = "/neworder" ><button>Create Order</button></a>
+        <a href = "/orders/?Completed=true"><button>Filter Returned Movies</button></a>
+        <a href = "/orders/?Completed=false"><button>Filter Unreturned Movies</button></a>
+
+        <p></p><p></p>
+		<table class = "sortable">
+            <thead>
 			<tr>
-				<td>Name</td>
-				<td>Email</td>
-				<td>Address</td>
-				<td>Phone</td>
-				<td>Age</td>
+				<th style = "text-align: center">Movie</th>
+				<th style = "text-align: center">Returned</th>
+				<th style = "text-align: center">Quantity</th>
+                <th style = "text-align: center">Order Date</th>
 			</tr>
+            </thead>
+            <tbody>
+                {{#each orderList}}
 			<tr>
-				<td>{{User.Name}}</td>
-				<td>{{User.Email}}</td>
-				<td>{{User.Address}}</td>
-				<td>{{User.PhoneNumber}}</td>
-				<td>{{User.Age}}</td>
+				<td>{{Movie}}</td>
+				<td>{{Completed}}</td>
+				<td>{{Quantity}}</td>
+                <td>{{createdAt}}</td>
+                <td><a href = "/updateorder/{{id}}/{{Movie}}/{{Completed}}/{{Quantity}}"><button>Update Order</button></a></td>
+                <td><a href = "/orders/{{_id}}"><button>Delete Order</button></a></td>
 			</tr>
+                {{/each}}
+            </tbody>
+
 		</table>
 
 </body>
