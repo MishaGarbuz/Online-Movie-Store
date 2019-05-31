@@ -127,6 +127,12 @@ app.get('/movies', (req,res) => {
     })
 })
 
+app.get('/updateuser'), (req,res) => {
+    res.render('updateuser', {
+        title: 'Update User'
+    })
+}
+
 app.listen(port, () => {
     console.log('Server up on port ' + port)
 })
