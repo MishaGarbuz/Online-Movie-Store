@@ -21,7 +21,7 @@ router.post('/users', async (req, res) => {
         const token = await user.generateAuthToken()
         res.status(201).send({user, token})
         res.cookie('token',token, {httpOnly: true})
-        res.redirect('/')
+        res.redirect('/wo')
     } catch (e) {
         res.status(400).send(e)
     }
@@ -125,6 +125,56 @@ router.delete('/users/me', auth, async (req, res) => {
     } catch (e) {
         res.status(500).send(e)
 
+    }
+})
+
+router.get('/updateuser/:Name/:Email/:Address/:PhoneNumber/:Age', auth, async (req,res) => {
+    const Name = req.params.Name;
+
+    try {
+        const user = await User.findOne({ Name, Name:req.user.Name})
+        console.log(user);
+
+        if(!user) {
+            return res.status(404).send()
+        }
+
+        res.render('updateuser', {
+            Name: req.params.Name,
+            Email: req.params.Email,
+            Address: req.params.Address,
+            PhoneNumber: req.params.PhoneNumber
+        })
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
+router.post('/user/:Name', auth, async (req,res) => {
+    const updates = Object.keys(req.body)
+    //console.log(req.body)
+    const allowedUpdates = ['Name','Email','Address','PhoneNumber']
+    const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
+    
+    if(!isValidOperation) {
+        return res.status(404).send({ error: 'What you are trying to update, does not exist'})
+    }
+
+    try {
+        const Name = req.params.Name;
+        const user = await User.findOne({ Name, Name:req.user.Name})
+    
+        if(!user) {
+            return res.status(404).send()
+        }
+
+        updates.forEach((update)=> user[update] = req.body[update])
+        await user.save()
+        res.redirect('/myaccount')
+        //res.send(order)
+
+    } catch (e) {
+        res.status(400).send(e)
     }
 })
 

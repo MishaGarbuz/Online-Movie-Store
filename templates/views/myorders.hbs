@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html lang= "en">
+<html lang="en">
+
 <head>
 	<title>Online Movie Store</title>
 	<meta charset="utf-8">
@@ -9,99 +10,105 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/js/clientside.js"></script>
-    <script type="text/javascript" src="/js/inline-edit.s"></script>
+	<script type="text/javascript" src="/js/inline-edit.s"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="/css/style2.css" rel="stylesheet" type="text/css">
 </head>
 
 
 <body>
-<div class= 'container-fluid'>
-	<div class="constSide">
-		<ul class='nav navbar-nav constNavBar'>
-			<li>
-				<a href="/" ><img class="nav-img" src={{pathToImage}}'img/Base_Side_Bar/home.png' style='width:80%;height:40%;'>Home</a>
+	<div class='container-fluid'>
+		<div class="constSide">
+			<ul class='nav navbar-nav constNavBar'>
+				<li>
+					<a href="/"><img class="nav-img" src={{pathToImage}}'img/Base_Side_Bar/home.png'
+							style='width:80%;height:40%;'>Home</a>
 
-			</li>
+				</li>
 
-			<li>
-				<a href="/movies" ><img class ="nav-img" src="img/Base_Side_Bar/film.png" style='width:80%;height:80%;'>Movies</a>
-			</li>
+				<li>
+					<a href="/movies"><img class="nav-img" src="img/Base_Side_Bar/film.png"
+							style='width:80%;height:80%;'>Movies</a>
+				</li>
 
-			<li class="active">
-				<a href="/orders" ><img class="nav-img-active"  src='img/Hover_Side_Bar/order-hover.png' style='width:80%;height:80%;'>Orders</a>
-			</li>
+				<li class="active">
+					<a href="/orders"><img class="nav-img-active" src='img/Hover_Side_Bar/order-hover.png'
+							style='width:80%;height:80%;'>Orders</a>
+				</li>
 
-			<li>
-				<a href="/about" class="nav-img"><img class="nav-img"  src='img/Base_Side_Bar/email.png' style='width:80%;height:80%;'>About</a>
-			</li>
+				<li>
+					<a href="/about" class="nav-img"><img class="nav-img" src='img/Base_Side_Bar/email.png'
+							style='width:80%;height:80%;'>About</a>
+				</li>
 
-		</ul>
-	</div>
-
-	<div class="mainbody">
-
-		<div class="topbar">
-			<nav class="navbar navbar-default">
-				<form class="navbar-form pull-left col-sm-4">
-					<div class="input-group">
-						<input type="text" class="form-control input-large search-query" placeholder="Search">
-							<div class="input-group-btn">
-						  	<button class="btn btn-default" type="submit">
-								<i class="glyphicon glyphicon-search"></i>
-						  	</button>
-						</div>
-					</div>
-				</form>
-                
-				<ul class="nav navbar-nav pull-right">
-                    <div class = "dropdown">
-				        <li class = 'fb'><a href="#">Account  <span class="glyphicon glyphicon-user"></span> <span class="glyphicon glyphicon-triangle-bottom"></a></li>
-                        <div class = "dropdown-content">
-                            
-														{{#if loggedIn}}
-														<form action = "/users/logout" method = "POST">
-														<a href = "javascript:;" onclick="parentNode.submit();">Logout</a>														
-														<a href = "/myaccount">My Account</a>
-														{{else}}
-														<a href = "/register">Register</a>
-                                                        <a href = "/login">Login</a>
-														{{/if}}
-														</form>
-                        </div>
-                    </div>
-				</ul>
-			</nav>
-			{{!-- <hr style="height: 5px; border: 0; box-shadow: inset 0 12px 12px -8px rgba(0,0,0,0.5); margin-top: -10px;"> --}}
+			</ul>
 		</div>
-        <a href = "/neworder" ><button>Create Order</button></a>
-        <a href = "/orders/?Completed=true"><button>Filter Returned Movies</button></a>
-        <a href = "/orders/?Completed=false"><button>Filter Unreturned Movies</button></a>
 
-        <p></p><p></p>
-		<table class = "sortable">
-            <thead>
-			<tr>
-				<th style = "text-align: center">Movie</th>
-				<th style = "text-align: center">Returned</th>
-				<th style = "text-align: center">Quantity</th>
-                <th style = "text-align: center">Order Date</th>
-			</tr>
-            </thead>
-            <tbody>
-                {{#each orderList}}
-			<tr>
-				<td>{{Movie}}</td>
-				<td>{{Completed}}</td>
-				<td>{{Quantity}}</td>
-                <td>{{createdAt}}</td>
-                <td><a href = "/updateorder/{{id}}/{{Movie}}/{{Completed}}/{{Quantity}}"><button>Update Order</button></a></td>
-                <td><a href = "/orders/{{_id}}"><button>Delete Order</button></a></td>
-			</tr>
-                {{/each}}
-            </tbody>
+		<div class="mainbody">
 
-		</table>
+			<div class="topbar">
+				<nav class="navbar navbar-default">
+					<form class="navbar-form pull-left col-sm-4">
+						<div class="input-group">
+							<input type="text" class="form-control input-large search-query" placeholder="Search">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+
+					<ul class="nav navbar-nav pull-right">
+						<div class="dropdown">
+							<li class='fb'><a href="#">Account <span class="glyphicon glyphicon-user"></span> <span
+										class="glyphicon glyphicon-triangle-bottom"></a></li>
+							<div class="dropdown-content">
+								{{#if loggedIn}}
+								<form action="/users/logout" method="POST">
+									<a href="javascript:;" onclick="parentNode.submit();">Logout</a>
+									<a href="/myaccount">My Account</a>
+									{{else}}
+									<a href="/register">Register</a>
+									<a href="/login">Login</a>
+									{{/if}}
+								</form>
+							</div>
+						</div>
+					</ul>
+				</nav>
+				{{!-- <hr style="height: 5px; border: 0; box-shadow: inset 0 12px 12px -8px rgba(0,0,0,0.5); margin-top: -10px;"> --}}
+			</div>
+			<a href="/neworder"><button>Create Order</button></a>
+			<a href="/orders/?Completed=true"><button>Filter Returned Movies</button></a>
+			<a href="/orders/?Completed=false"><button>Filter Unreturned Movies</button></a>
+
+			<p></p>
+			<p></p>
+			<table class="sortable">
+				<thead>
+					<tr>
+						<th style="text-align: center">Movie</th>
+						<th style="text-align: center">Returned</th>
+						<th style="text-align: center">Quantity</th>
+						<th style="text-align: center">Order Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each orderList}}
+					<tr>
+						<td>{{Movie}}</td>
+						<td>{{Completed}}</td>
+						<td>{{Quantity}}</td>
+						<td>{{createdAt}}</td>
+						<td><a href="/updateorder/{{id}}/{{Movie}}/{{Completed}}/{{Quantity}}"> <button>Update Order</button></a></td>
+						<td><a href="/orders/{{_id}}"><button>Delete Order</button></a></td>
+					</tr>
+					{{/each}}
+				</tbody>
+
+			</table>
 
 </body>
+
 </html>
