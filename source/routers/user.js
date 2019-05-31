@@ -193,7 +193,7 @@ router.post('/users/deletelog', auth, async (req, res) => {
             req.user.loginStamp = []
             req.user.logoutStamp = []
             await req.user.save()
-            res.redirect('/')
+            res.redirect('/myaccount')
             //res.render('logfile', { title: "Logs", value: user.loginStamp,logout: user.logoutStamp })
     } catch (e) {
         res.status(400).send(e)
