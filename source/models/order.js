@@ -20,6 +20,19 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         require: true,
         default: 1
+    },
+    Status: {
+        type: String,
+        trim: true,
+        validate(value) {
+            // if (value != "Submitted") {
+            //     throw new Error ('The status of an order must be Submitted or Cancelled only')
+            // }
+            if (!validator.isIn(value,['Submitted','Cancelled'])) {
+                throw new Error ('The status of an order must be Submitted or Cancelled only')
+            }
+        },
+        default: 'Submitted'
     }
 }, {
     timestamps: true

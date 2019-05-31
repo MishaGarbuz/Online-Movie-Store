@@ -5,6 +5,7 @@ require('./db/mongoose')
 const userRouter = require('./routers/user')
 const supplierRouter = require('./routers/supplier')
 const orderRouter = require('./routers/order')
+const movieRouter = require('./routers/movie')
 const bodyParser = require('body-parser')
 const auth = require('../source/middleware/auth')
 
@@ -27,6 +28,7 @@ app.use(express.json())
 app.use(userRouter)
 app.use(supplierRouter)
 app.use(orderRouter)
+app.use(movieRouter)
 
 // setup handle bars engine and views location
 app.set('view engine','hbs')
@@ -86,6 +88,19 @@ app.get('/updateorder', (req,res) => {
     res.render('updateorder', {
         title: 'Update Order',
         name: 'Michael Garbuz',
+        loggedIn
+    })
+})
+
+app.get('/cancelorder', (req,res) => {
+    if (req.headers.cookie) {
+        loggedIn = true
+    } else {
+        loggedIn = false
+    }
+    res.render('cancelorder', {
+        title: 'Cancel Order',
+        name: 'Cancel Order',
         loggedIn
     })
 })
