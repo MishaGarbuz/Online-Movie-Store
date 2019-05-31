@@ -108,10 +108,11 @@ app.get('/myaccount', auth, (req,res) => {
         title: 'My Account',
         name: 'Michael Garbuz',
         User: req.user,
-        loggedIn: true
+        loggedIn: true,
+        loginList: req.user.loginStamp,
+        logoutList: req.user.logoutStamp
     })
 })
-
 
 app.get('/about',(req,res) => {
     res.render('about', {

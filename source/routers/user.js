@@ -178,4 +178,17 @@ router.post('/user/:Name', auth, async (req,res) => {
     }
 })
 
+router.post('/users/deletelog', auth, async (req, res) => {
+    try {
+
+            req.user.loginStamp = []
+            req.user.logoutStamp = []
+            await req.user.save()
+            res.redirect('/')
+            //res.render('logfile', { title: "Logs", value: user.loginStamp,logout: user.logoutStamp })
+    } catch (e) {
+        res.status(400).send(e)
+    }
+})
+
 module.exports = router

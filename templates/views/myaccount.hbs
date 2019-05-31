@@ -98,5 +98,29 @@
 				<td><a href="/updateuser/{{User.Name}}/{{User.Email}}/{{User.Address}}/{{User.PhoneNumber}}/{{User.Age}}"> <button>Update User</button></a></td>
 			</tr>
 		</table>
+
+		<div>
+				<table>
+					<tr>
+						<td>Login Timestamps</td>
+						{{#each loginList}}
+					<tr>
+						<td>{{this.time}}</td>
+					</tr>
+					{{/each}}
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td>Logout Timestamps</td>
+						{{#each logoutList}}
+					<tr>
+						<td>{{this.time}}</td>
+					</tr>
+					{{/each}}
+					</tr>
+				</table>
+			</div>
+
 </body>
 </html>

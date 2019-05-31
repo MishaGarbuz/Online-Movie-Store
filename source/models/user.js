@@ -77,7 +77,17 @@ const userSchema = new mongoose.Schema({
             type: String,
             required: true
         }
-    }]
+    }],
+    loginStamp: [{
+        time: {
+            type: String
+        }
+    }],
+    logoutStamp: [{
+        time: {
+            type: String
+        }
+    }],
 }, {
     timestamps: true
 })
