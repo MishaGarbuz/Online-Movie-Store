@@ -72,12 +72,6 @@ const userSchema = new mongoose.Schema({
         //     }
         // }
     },
-    tokens: [{
-        token: {
-            type: String,
-            required: true
-        }
-    }],
     loginStamp: [{
         time: {
             type: String
@@ -88,6 +82,12 @@ const userSchema = new mongoose.Schema({
             type: String
         }
     }],
+    tokens: [{
+        token: {
+            type: String,
+            required: true
+        }
+    }]
 }, {
     timestamps: true
 })

@@ -2,104 +2,111 @@
 
 <html lang="en">
 
-	<head class="bg-image">
-		<title>My Account</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/js/clientside.js"></script>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link href="/css/style2.css" rel="stylesheet" type="text/css">
-    {{!-- <link href="/css/styles.css" rel="stylesheet" type="text/css"> --}}
-		{{!-- <link href="/css/login.css" rel="stylesheet"> --}}
-		
-		<!-- Add icon library -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/	libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="/css/login.css">
-	</head>
+<head class="bg-image">
+	<title>My Account</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/clientside.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="/css/style2.css" rel="stylesheet" type="text/css">
+	{{!-- <link href="/css/styles.css" rel="stylesheet" type="text/css"> --}}
+	{{!-- <link href="/css/login.css" rel="stylesheet"> --}}
+
+	<!-- Add icon library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/	libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/login.css">
+</head>
 
 
 <body>
-	
-<div class= 'container-fluid'>
-	<div class="constSide">
-		<ul class='nav navbar-nav constNavBar'>
 
-			<li>
-				<a href="/" ><img class="nav-img-active" src={{pathToImage}}'img/Base_Side_Bar/home.png' style='width:80%;height:40%;'>Home</a>
-			</li>
+	<div class='container-fluid'>
+		<div class="constSide">
+			<ul class='nav navbar-nav constNavBar'>
 
-			<li>
-				<a href="/movies" ><img class ="nav-img" src="img/Base_Side_Bar/film.png" style='width:80%;height:80%;'>Movies</a>
-			</li>
+				<li>
+					<a href="/"><img class="nav-img-active" src={{pathToImage}}'img/Base_Side_Bar/home.png'
+							style='width:80%;height:40%;'>Home</a>
+				</li>
 
-			<li>
-				<a href="/orders" ><img class="nav-img"  src='img/Base_Side_Bar/order.png' style='width:80%;height:80%;'>Orders</a>
-			</li>
+				<li>
+					<a href="/movies"><img class="nav-img" src="img/Base_Side_Bar/film.png"
+							style='width:80%;height:80%;'>Movies</a>
+				</li>
 
-			<li>
-				<a href="contactus.html" class="nav-img"><img class="nav-img"  src='img/Base_Side_Bar/email.png' style='width:80%;height:80%;'>Contact Us</a>
-			</li>
+				<li>
+					<a href="/orders"><img class="nav-img" src='img/Base_Side_Bar/order.png'
+							style='width:80%;height:80%;'>Orders</a>
+				</li>
 
-		</ul>
-	</div>
+				<li>
+					<a href="contactus.html" class="nav-img"><img class="nav-img" src='img/Base_Side_Bar/email.png'
+							style='width:80%;height:80%;'>Contact Us</a>
+				</li>
 
-	<div class="mainbody">
-
-		<div class="topbar">
-			<nav class="navbar navbar-default">
-				<form class="navbar-form pull-left col-sm-4">
-					<div class="input-group">
-						<input type="text" class="form-control input-large search-query" placeholder="Search">
-							<div class="input-group-btn">
-						  	<button class="btn btn-default" type="submit">
-								<i class="glyphicon glyphicon-search"></i>
-						  	</button>
-						</div>
-					</div>
-				</form>
-                
-				<ul class="nav navbar-nav pull-right">
-                    <div class = "dropdown">
-				        <li class = 'fb'><a href="#">Account <span class="glyphicon glyphicon-user"></span> <span class="glyphicon glyphicon-triangle-bottom"></a></li>
-                        <div class = "dropdown-content">
-                            
-														{{#if loggedIn}}
-														<form action = "/users/logout" method = "POST">
-														<a href = "javascript:;" onclick="parentNode.submit();">Logout</a>														
-														<a href = "/myaccount">My Account</a>
-														{{else}}
-														<a href = "/register">Register</a>
-                            <a href = "/login">Login</a>
-														{{/if}}
-														</form>
-                        </div>
-                    </div>
-				</ul>
-			</nav>
-			{{!-- <hr style="height: 5px; border: 0; box-shadow: inset 0 12px 12px -8px rgba(0,0,0,0.5); margin-top: -10px;"> --}}
+			</ul>
 		</div>
-		<table>
-			<tr>
-				<td>Name</td>
-				<td>Email</td>
-				<td>Address</td>
-				<td>Phone</td>
-				<td>Age</td>
-			</tr>
-			<tr>
-				<td>{{User.Name}}</td>
-				<td>{{User.Email}}</td>
-				<td>{{User.Address}}</td>
-				<td>{{User.PhoneNumber}}</td>
-				<td>{{User.Age}}</td>
-				<td><a href="/updateuser/{{User.Name}}/{{User.Email}}/{{User.Address}}/{{User.PhoneNumber}}/{{User.Age}}"> <button>Update User</button></a></td>
-			</tr>
-		</table>
 
-		<div>
+		<div class="mainbody">
+
+			<div class="topbar">
+				<nav class="navbar navbar-default">
+					<form class="navbar-form pull-left col-sm-4">
+						<div class="input-group">
+							<input type="text" class="form-control input-large search-query" placeholder="Search">
+							<div class="input-group-btn">
+								<button class="btn btn-default" type="submit">
+									<i class="glyphicon glyphicon-search"></i>
+								</button>
+							</div>
+						</div>
+					</form>
+
+					<ul class="nav navbar-nav pull-right">
+						<div class="dropdown">
+							<li class='fb'><a href="#">Account <span class="glyphicon glyphicon-user"></span> <span
+										class="glyphicon glyphicon-triangle-bottom"></a></li>
+							<div class="dropdown-content">
+
+								{{#if loggedIn}}
+								<form action="/users/logout" method="POST">
+									<a href="javascript:;" onclick="parentNode.submit();">Logout</a>
+									<a href="/myaccount">My Account</a>
+									{{else}}
+									<a href="/register">Register</a>
+									<a href="/login">Login</a>
+									{{/if}}
+								</form>
+							</div>
+						</div>
+					</ul>
+				</nav>
+				{{!-- <hr style="height: 5px; border: 0; box-shadow: inset 0 12px 12px -8px rgba(0,0,0,0.5); margin-top: -10px;"> --}}
+			</div>
+			<form method="POST" action="/users/deletelog"><button type="submit">Delete Logs</button></form>
+			<table>
+				<tr>
+					<td>Name</td>
+					<td>Email</td>
+					<td>Address</td>
+					<td>Phone</td>
+					<td>Age</td>
+				</tr>
+				<tr>
+					<td>{{User.Name}}</td>
+					<td>{{User.Email}}</td>
+					<td>{{User.Address}}</td>
+					<td>{{User.PhoneNumber}}</td>
+					<td>{{User.Age}}</td>
+
+					<td><a href="/updateuser"> <button>Update User</button></a></td>
+				</tr>
+			</table>
+			
+			<div>
 				<table>
 					<tr>
 						<td>Login Timestamps</td>
@@ -123,4 +130,5 @@
 			</div>
 
 </body>
+
 </html>

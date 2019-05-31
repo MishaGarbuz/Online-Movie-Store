@@ -21,7 +21,7 @@ router.post('/users', async (req, res) => {
         const token = await user.generateAuthToken()
         res.status(201).send({user, token})
         res.cookie('token',token, {httpOnly: true})
-        res.redirect('/wo')
+        res.redirect('/')
     } catch (e) {
         res.status(400).send(e)
     }
@@ -39,6 +39,8 @@ router.post('/users/login', async (req, res) => {
             loggedIn = false
         }
         res.cookie('token',token,{httpOnly: true})
+        user.loginStamp.push({ time: new Date()})
+        await user.save()
         res.redirect('/')
         //res.render('index.hbs', {loggedIn})
     } catch (e) {
@@ -65,6 +67,7 @@ router.post('/users/logout', auth, async (req, res) => {
             return token.token !== req.token
         })
         loggedIn = false
+        req.user.logoutStamp.push({ time: new Date() })
         await req.user.save()
         res.clearCookie('token').redirect('/')
         //res.render('index', {loggedIn, pathToImage: 'img'})
@@ -97,9 +100,9 @@ router.get('/users/me', auth, async (req,res) => {
 
 //----------------- Updates a user using findByIdAndUpdate with authentication -----------------------\\
 
-router.patch('/users/me', async (req,res) => {
+router.post('/users/me', async (req,res) => {
     const updates = Object.keys(req.body)
-    const allowedUpdates = ['Name','Email','Password','Age']
+    const allowedUpdates = ['Name','Email','Password','Age', 'PhoneNumber', 'Address']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
 
     if (!isValidOperation) {
@@ -109,7 +112,13 @@ router.patch('/users/me', async (req,res) => {
     try {
         updates.forEach((update) => req.user[update] = req.body[update])
         await req.user.save()
-        res.send(req.user)
+        //res.send(req.user)
+        res.render('updateuser', {
+            _id: req.user._id,
+            Name: req.user.Name,
+            PhoneNumber: req.user.PhoneNumber,
+            Address: req
+        })
     } catch (e) {
         res.status(400).send(e)
     }
@@ -153,7 +162,7 @@ router.get('/updateuser/:Name/:Email/:Address/:PhoneNumber/:Age', auth, async (r
 router.post('/user/:Name', auth, async (req,res) => {
     const updates = Object.keys(req.body)
     //console.log(req.body)
-    const allowedUpdates = ['Name','Email','Address','PhoneNumber', 'Age']
+    const allowedUpdates = ['Name','Email','Address','PhoneNumber']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
     
     if(!isValidOperation) {
