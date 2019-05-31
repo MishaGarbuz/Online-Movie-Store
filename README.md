@@ -6,10 +6,10 @@ To run:
 2) Unzip the file to the desktop
 3) Open up Terminal if on Mac, or open up command line if on Windows.
 4) Navigate to file
-5) Make sure Node is installed
-6) Run npm install
-7) Run the command: 'node source/app.js'
-8) Open up 'localhost:3000' on your browser
-9) See the login page
-10) Navigate to 'localhost:3000/store' to see the landing page once logged in functionality works
-11) Feel free to click on 'About' and 'Help Page'
+5) Make sure Node is installed. If you dont know if it is, check it by running the command node -v
+6) Check if npm is installed. If you dont know check it by running npm -v
+   (For further instructions on how to install node and npm visit https://www.npmjs.com/get-npm)
+7) Run npm install
+8) Run the command: 'node source/app.js'
+9) Open up 'localhost:3000' on your browser
+10) Browse our website
