@@ -81,7 +81,7 @@ router.get('/updateorder/:id/:Movie/:Completed/:Quantity', auth, async (req,res)
             return res.status(404).send()
         }
         //res.send(order)
-        console.log(req)
+        //console.log(req)
         res.render('updateorder', {
             title: 'Update Orders',
             name: 'Michael Garbuz',
@@ -95,10 +95,33 @@ router.get('/updateorder/:id/:Movie/:Completed/:Quantity', auth, async (req,res)
     }
 })
 
+router.get('/updateshipping/:id/:ShippingMethod/:ShippingAddress', auth, async (req,res) => {
+    const _id = req.params.id
+
+    try {
+        const order = await Order.findOne({ _id, Owner: req.user._id})
+        
+        if(!order) {
+            return res.status(404).send()
+        }
+        //res.send(order)
+        //console.log(req)
+        res.render('updateshipping', {
+            title: 'Update Orders',
+            name: 'Dov Royal',
+            _id: req.params.id,
+            ShippingMethod: req.params.ShippingMethod,
+            ShippingAddress: req.params.ShippingAddress
+        })
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
 router.post('/orders/:id', auth, async (req,res) => {
     const updates = Object.keys(req.body)
     console.log(req.body)
-    const allowedUpdates = ['Movie','Completed','Quantity']
+    const allowedUpdates = ['Movie','Completed','Quantity', 'ShippingAddress', 'ShippingMethod']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
     
     if(!isValidOperation) {

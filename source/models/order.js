@@ -20,6 +20,14 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         require: true,
         default: 1
+    },
+    ShippingMethod: {
+        type: String,
+        require: true,
+    },
+    ShippingAddress: {
+        type: String,
+        require: true,
     }
 }, {
     timestamps: true
