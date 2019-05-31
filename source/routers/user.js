@@ -133,7 +133,7 @@ router.get('/updateuser/:Name/:Email/:Address/:PhoneNumber/:Age', auth, async (r
 
     try {
         const user = await User.findOne({ Name, Name:req.user.Name})
-        console.log(user);
+        //console.log(user);
 
         if(!user) {
             return res.status(404).send()

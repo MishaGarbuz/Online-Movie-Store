@@ -120,7 +120,7 @@ router.get('/updateshipping/:id/:ShippingMethod/:ShippingAddress', auth, async (
 
 router.post('/orders/:id', auth, async (req,res) => {
     const updates = Object.keys(req.body)
-    console.log(req.body)
+    //console.log(req.body)
     const allowedUpdates = ['Movie','Completed','Quantity', 'ShippingAddress', 'ShippingMethod']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
     
