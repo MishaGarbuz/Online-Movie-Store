@@ -91,6 +91,7 @@
 						<th style="text-align: center">Movie</th>
 						<th style="text-align: center">Returned</th>
 						<th style="text-align: center">Quantity</th>
+						<th style="text-align: center">Status</th>
 						<th style="text-align: center">Shipping Method</th>
 						<th style="text-align: center">Shipping Address</th>
 						<th style="text-align: center">Order Date</th>
@@ -102,12 +103,15 @@
 						<td>{{Movie}}</td>
 						<td>{{Completed}}</td>
 						<td>{{Quantity}}</td>
+						<td>{{Status}}</td>
 						<td>{{ShippingMethod}}</td>
 						<td>{{ShippingAddress}}</td>
 						<td>{{createdAt}}</td>
+
 						<td><a href="/updateorder/{{id}}/{{Movie}}/{{Completed}}/{{Quantity}}"> <button>Update Order</button></a></td>
-						<td><a href="/updateshipping/{{id}}/{{ShippingMethod}}/{{ShippingAddress}}"> <button>Update Shipping</button></a></td>
-						<td><a href="/orders/{{_id}}"><button>Delete Order</button></a></td>
+						<td><a href="/updateshipping/{{id}}/{{ShippingMethod}}/{{ShippingAddress}}"> <button>UpdateShipping</button></a></td>
+						<td><a href="/cancelorder/{{id}}/{{Movie}}/{{Completed}}/{{Quantity}}/{{Status}}"><button>Cancel</button></a></td>
+
 					</tr>
 					{{/each}}
 				</tbody>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang= "en">
+<head>
+	<title>Cancel Order</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/clientside.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="/css/style2.css" rel="stylesheet" type="text/css">
+
+	<!-- Add icon library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/	libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/login.css">
+
+</head>
+
+</html>
+
+<body>
+	<div class='container-fluid'>
+		<div class="constSide">
+			<ul class='nav navbar-nav constNavBar'>
+				<li>
+					<a href="/"><img class="nav-img" src='img/Base_Side_Bar/home.png'
+							style='width:80%;height:40%;'>Home</a>
+
+				</li>
+
+				<li>
+					<a href="/movies"><img class="nav-img" src="img/Base_Side_Bar/film.png"
+							style='width:80%;height:80%;'>Movies</a>
+				</li>
+
+				<li class="active">
+					<a href="/orders"><img class="nav-img-active" src='img/Hover_Side_Bar/order-hover.png'
+							style='width:80%;height:80%;'>Orders</a>
+				</li>
+
+				<li>
+					<a href="/about" class="nav-img"><img class="nav-img" src='img/Base_Side_Bar/email.png'
+							style='width:80%;height:80%;'>Contact Us</a>
+				</li>
+
+			</ul>
+		</div>
+
+
+	</div>
+
+	<div class="row">
+			<div class="col-md-5 mx-auto">
+				<div class="card card-body">
+
+					<h5 class="text-center">Cancel Order</h5>
+					
+					<form action="/orders/{{_id}}" method="post">
+
+						<div class="input-container">
+							<i class="fa fa-users icon"></i>
+							<input id = "Movie Name" class="input-field" type="Text" placeholder="Movie Name" name="Movie" value = "{{Movie}}" disabled required>
+						</div>					
+						
+						<div class="input-container">
+							<i class="fa fa-envelope icon"></i>
+							<input id = "Quantity" class="input-field" type="number" placeholder="Quantity" name="Quantity" value = "{{Quantity}}" disabled required>
+						</div>
+
+						<div class="input-container">
+							<i class="fa fa-envelope icon"></i>
+							<input id = "Completed" class="input-field" type="text" placeholder="Completed" name="Completed" value = "{{Completed}}" disabled required>
+						</div> 
+
+                        <div class="input-container">
+                            <i class="fa fa-envelope icon"></i>
+                            <input id = "Status" class="input-field" type="text" placeholder="Status" name="Status" value = "Cancelled" required>
+                        </div>                       
+						
+		
+						<button type="submit" class="btn btn-primary">Submit</button>
+		
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+</body>
+</html>

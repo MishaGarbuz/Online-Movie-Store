@@ -118,6 +118,31 @@ router.get('/updateshipping/:id/:ShippingMethod/:ShippingAddress', auth, async (
     }
 })
 
+router.get('/cancelorder/:id/:Movie/:Completed/:Quantity/:Status', auth, async (req,res) => {
+    const _id = req.params.id
+
+    try {
+        const order = await Order.findOne({ _id, Owner: req.user._id})
+        
+        if(!order) {
+            return res.status(404).send()
+        }
+        //res.send(order)
+        console.log(req)
+        res.render('cancelorder', {
+            title: 'Update Orders',
+            name: 'Michael Garbuz',
+            _id: req.params.id,
+            Movie: req.params.Movie,
+            Completed: req.params.Completed,
+            Quantity: req.params.Quantity,
+            Status: req.params.Status
+        })
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
 router.post('/orders/:id', auth, async (req,res) => {
     const updates = Object.keys(req.body)
     //console.log(req.body)
