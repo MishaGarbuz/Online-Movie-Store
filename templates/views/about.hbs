@@ -1,17 +1,94 @@
 <!DOCTYPE html>
 
-<html>
-    <head>
-        <title>About</title>
-        <link rel="icon" href="/img/video-solid.svg">
-        <link rel="stylesheet" href="/css/styles.css">
-    </head>
+<html lang="en">
 
-    <body>
-        <div class="main-content">
-        {{>header}}
-        <p>This site was created by Michael Garbuz. It uses data from mapbox.com and darksky.net!</p>
-        </div>
-        {{>footer}}
-    </body>
+<head>
+	<title>About</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/clientside.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="/css/style2.css" rel="stylesheet" type="text/css">
+
+	<!-- Add icon library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/	libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/login.css">
+
+</head>
+
+</html>
+
+<body>
+	<div class='container-fluid'>
+		<div class="constSide">
+			<ul class='nav navbar-nav constNavBar'>
+
+				<li>
+					<a href="/"><img class="nav-img-active" src='img/Base_Side_bar/home.png'
+							style='width:80%;height:40%;'>Home</a>
+
+				</li>
+
+				<li>
+					<a href="/movies"><img class="nav-img" src="img/Base_Side_Bar/film.png"
+							style='width:80%;height:80%;'>Movies</a>
+				</li>
+
+				<li>
+					<a href="/orders"><img class="nav-img" src='img/Base_Side_Bar/order.png'
+							style='width:80%;height:80%;'>Orders</a>
+				</li>
+
+				<li class="active">
+					<a href="/about" class="nav-img-active"><img class="nav-img" src='img/Hover_Side_Bar/email-hover.png'
+							style='width:80%;height:80%;'>Contact Us</a>
+				</li>
+
+			</ul>
+		</div>
+
+		</ul>
+	</div>
+
+	<div>
+		<div>
+
+			<div class="header">
+				<div class="col-md-5 mx-auto">
+					<div class="card card-body">
+
+						<h5 class="text-center">About Us</h5>
+
+						<p>We are a small online movie database</p>
+
+						<p>We are currently situated at 81 Broadway, Ultimo</p>
+
+					</div>
+				</div>
+			</div>
+
+
+			<div class="card card-body map">
+
+				<div class="mapouter">
+					<div class="gmap_canvas">
+						<iframe width="700" height="451" id="gmap_canvas"
+							src="https://maps.google.com/maps?q=Building%2011%20University%20of%20Technology%20Sydney%2081%2C%20Broadway%2C%20Ultimo%20NSW%202007&t=&z=13&ie=UTF8&iwloc=&output=embed"
+							frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+						</iframe>
+
+						<a href="https://www.crocothemes.net"></a>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+
 </html>
