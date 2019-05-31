@@ -90,6 +90,19 @@ app.get('/updateorder', (req,res) => {
     })
 })
 
+app.get('/cancelorder', (req,res) => {
+    if (req.headers.cookie) {
+        loggedIn = true
+    } else {
+        loggedIn = false
+    }
+    res.render('cancelorder', {
+        title: 'Cancel Order',
+        name: 'Cancel Order',
+        loggedIn
+    })
+})
+
 app.get('/myaccount', auth, (req,res) => {
     res.render('myaccount', {
         title: 'My Account',
