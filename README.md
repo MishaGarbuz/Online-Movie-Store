@@ -10,6 +10,3 @@ To run:
 6) Run npm install
 7) Run the command: 'node source/app.js'
 8) Open up 'localhost:3000' on your browser
-9) See the login page
-10) Navigate to 'localhost:3000/store' to see the landing page once logged in functionality works
-11) Feel free to click on 'About' and 'Help Page'
